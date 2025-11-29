@@ -10,10 +10,48 @@
             width: 100%;
             height: 100px;
         }
+        #nav-container{
+            width: 100%;
+            height: 50px;
+            background-color: grey;
+            padding: 20px;
+        }
+        #filterCategory,#availabilityFilter,#clearFilter{
+            padding: 10px;
+            margin-left: 10%;
+        }
+        #clearFilter{
+            background-color: azure;
+            color: red;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px black;
+        }
+        #clearFilter:hover{
+            cursor: pointer;
+            background-color: aquamarine;
+        }
+
     </style>
 </head>
 <body>
-    <nav></nav>
+    <nav>
+        <div id="nav-container">
+        
+         <select id="filterCategory">
+            <option value="All">All</option>
+            <option value="Auto">Auto</option>
+            <option value="Car">Car</option>
+            <option value="Truck">Truck</option>
+            <option value="Bus">Bus</option>
+         </select> 
+         <select id="availabilityFilter">
+            <option value="All">All</option>
+            <option value="available">Available</option>
+            <option value="unavailable">Unavailable</option>
+         </select>  
+         <button id="clearFilter" onclick="clear()">Clear Filter</button>
+         </div>
+    </nav>
     <aside>
         <label>Reg No of Vehicle</label>
         <input type="text" id="regNo" required>
@@ -41,15 +79,16 @@
     <main></main>
 </body>
 <script>
-    function addFleet(){
+    
         let regNo=document.getElementById("regNo").value;
         let category=document.getElementById("category").value;
         let driverName=document.getElementById("driver").value;
         let availability=document.getElementById("availability").value;
-
-        if(!regNo || !category || !driverName ||!availability){
-            alert("Please fill all the details");
-        }
+    function addFleet(){
+        //if(!regNo || !category || !driverName ||!availability){
+          //  alert("Please fill all the details");
+           // return;
+        //}
         let main=document.createElement("mainContent");
         let card=document.createElement("div");
         card.classname="card";
@@ -60,5 +99,7 @@
         main.appendChild(card);
     }
     
+
+
 </script>
 </html>
