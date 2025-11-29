@@ -31,6 +31,18 @@
             background-color: aquamarine;
         }
 
+        #aside-container{
+            background-color: lightgrey;
+            width: fit-content;
+            height: 700px;
+            padding: 10px;
+
+        }
+        #addFleet{
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 2px 2px 2px black;
+        }
     </style>
 </head>
 <body>
@@ -53,7 +65,8 @@
          </div>
     </nav>
     <aside>
-        <label>Reg No of Vehicle</label>
+        <div id="aside-container">
+        <label>RegNo of Vehicle</label>
         <input type="text" id="regNo" required>
         <br><br>
         <label>Category</label>
@@ -68,35 +81,48 @@
         <label>Driver Name</label>
         <input type="text" id="driver" required>
         <br><br>
+        <label>Availability</label>
         <select id="availability">
+            
             <option value="Is Available">Is Available</option>
         <option value="available">Available</option>
         <option value="unavailable">Unavailable</option>
         </select>
         <br><br>
-        <button onclick="addFleet()">Add Fleet</button>
+        <button id="addFleet" onclick="addFleet()">Add Fleet</button>
+        </div>
     </aside>
     <main></main>
 </body>
 <script>
-    
+     let data=[];
+    function addFleet(){
+       
         let regNo=document.getElementById("regNo").value;
         let category=document.getElementById("category").value;
         let driverName=document.getElementById("driver").value;
         let availability=document.getElementById("availability").value;
-    function addFleet(){
-        //if(!regNo || !category || !driverName ||!availability){
-          //  alert("Please fill all the details");
-           // return;
-        //}
-        let main=document.createElement("mainContent");
+    
+        if(!regNo || !category || !driverName ||!availability){
+            alert("Please fill all the details");
+            return;
+        }
+        const newData={
+            regNo,
+            category,
+            driverName,
+            availability,
+            img:"https://coding-platform.s3.amazonaws.com/dev/lms/tickets/5e80fcb6-3f8e-480c-945b-30a5359eb40e/JNmYjkVr3WOjsrbu.png"
+        }
+        newData.push(data);
+        /*let main=document.createElement("mainContent");
         let card=document.createElement("div");
         card.classname="card";
         card.innerHTML=`<h2>Category ${category}</h2>
                         <h4>${regNo}</h4>
                         <h4>${driverName}</h4>
                         <h4>${availability}</h4>`;
-        main.appendChild(card);
+        main.appendChild(card);*/
     }
     
 
